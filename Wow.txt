@@ -4,6 +4,6 @@ Sidekick: Gina & Daisy
 
 ====weapons====
 -THE HOOK: grappling hook to move around
-
+	+turns into realistic dangling labubu
 =====concepts======
 gunpoint style stealth rawness
