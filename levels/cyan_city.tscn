@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://nay1uosfnt7f"]
+[gd_scene load_steps=23 format=4 uid="uid://nay1uosfnt7f"]
 
 [ext_resource type="Texture2D" uid="uid://c6qldl3uyytgx" path="res://sprites/tilemaps/cyan_city.png" id="1_v7ksl"]
 [ext_resource type="Script" uid="uid://jbmfxdea46h2" path="res://scripts/player/gina_labubu.gd" id="2_kgyeb"]
@@ -40,6 +40,10 @@ region = Rect2(384, 0, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_vfpbs"]
 atlas = ExtResource("3_ikgfs")
 region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxec0"]
+atlas = ExtResource("3_ikgfs")
+region = Rect2(640, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ikgfs"]
 atlas = ExtResource("2_xvadc")
@@ -86,6 +90,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vfpbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxec0")
 }],
 "loop": false,
 "name": &"bite",
@@ -146,7 +153,7 @@ script = ExtResource("2_kgyeb")
 sprite_frames = SubResource("SpriteFrames_124wg")
 animation = &"bite"
 autoplay = "idle"
-frame = 4
+frame = 5
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gina Labubu"]
