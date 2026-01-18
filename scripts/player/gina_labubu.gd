@@ -8,9 +8,9 @@ enum state {idle, attacking, stunned}
 var current_state
 var facing_right = true
 
-var jump_force = 300
-var gravity = 400
-var gravity_acceleration = 20
+var jump_force = 350
+var gravity = 800
+var gravity_acceleration = 30
 var jump_time = 0.2
 var jumping = false
 var jump_timer = 0
