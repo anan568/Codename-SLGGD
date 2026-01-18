@@ -1,0 +1,162 @@
+[gd_scene load_steps=22 format=4 uid="uid://nay1uosfnt7f"]
+
+[ext_resource type="Texture2D" uid="uid://c6qldl3uyytgx" path="res://sprites/tilemaps/cyan_city.png" id="1_v7ksl"]
+[ext_resource type="Script" uid="uid://jbmfxdea46h2" path="res://scripts/player/gina_labubu.gd" id="2_kgyeb"]
+[ext_resource type="Texture2D" uid="uid://bq8ujhicarbxg" path="res://sprites/characters/gina labubu/crawl_gina_labubu.png" id="2_xvadc"]
+[ext_resource type="Texture2D" uid="uid://ckky4wbg30a8d" path="res://sprites/characters/gina labubu/bite_gina_labubu.png" id="3_ikgfs"]
+[ext_resource type="Texture2D" uid="uid://c7u30gk08bav3" path="res://sprites/characters/gina labubu/idle_gina_labubu.png" id="3_kgyeb"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hi3m2"]
+texture = ExtResource("1_v7ksl")
+texture_region_size = Vector2i(12, 12)
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6, -6, 6, -6, 6, 6, -6, 6)
+3:4/0 = 0
+2:4/0 = 0
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6, -6, 6, -6, 6, 6, -6, 6)
+
+[sub_resource type="TileSet" id="TileSet_xvadc"]
+tile_size = Vector2i(12, 12)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 255
+sources/0 = SubResource("TileSetAtlasSource_hi3m2")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_124wg"]
+atlas = ExtResource("3_ikgfs")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7coij"]
+atlas = ExtResource("3_ikgfs")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edmjq"]
+atlas = ExtResource("3_ikgfs")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyi1x"]
+atlas = ExtResource("3_ikgfs")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfpbs"]
+atlas = ExtResource("3_ikgfs")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikgfs"]
+atlas = ExtResource("2_xvadc")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbv5n"]
+atlas = ExtResource("2_xvadc")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1dmb"]
+atlas = ExtResource("2_xvadc")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p48o3"]
+atlas = ExtResource("3_kgyeb")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i64mm"]
+atlas = ExtResource("3_kgyeb")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppq4i"]
+atlas = ExtResource("3_kgyeb")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fl7bl"]
+atlas = ExtResource("3_kgyeb")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_124wg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_124wg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7coij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edmjq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jyi1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfpbs")
+}],
+"loop": false,
+"name": &"bite",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikgfs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbv5n")
+}],
+"loop": true,
+"name": &"crawl",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1dmb")
+}],
+"loop": true,
+"name": &"crouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p48o3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i64mm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppq4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fl7bl")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7coij"]
+radius = 6.0
+height = 28.0
+
+[node name="Cyan City" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD//wEAAAACAAMAAAD+/wEAAAACAAMAAAAAAAEAAAACAAMAAAABAAEAAAACAAMAAAACAAEAAAACAAMAAAADAAEAAAACAAMAAAAEAAEAAAACAAMAAAAFAAEAAAACAAMAAAAGAAEAAAACAAMAAAAHAAEAAAACAAMAAAD9/wEAAAACAAMAAAD8/wEAAAACAAMAAAD7/wEAAAACAAMAAAD6/wEAAAACAAMAAAD5/wEAAAACAAMAAAD4/wEAAAACAAMAAAAHAAIAAAACAAQAAAAGAAIAAAACAAQAAAAFAAIAAAACAAQAAAAEAAIAAAACAAQAAAADAAIAAAACAAQAAAACAAIAAAACAAQAAAABAAIAAAACAAQAAAAAAAIAAAACAAQAAAD//wIAAAACAAQAAAD+/wIAAAACAAQAAAD9/wIAAAACAAQAAAD8/wIAAAACAAQAAAD7/wIAAAACAAQAAAD6/wIAAAACAAQAAAD6/wMAAAACAAQAAAD5/wMAAAACAAQAAAD5/wIAAAACAAQAAAD4/wIAAAACAAQAAAD4/wMAAAACAAQAAAD5/wQAAAACAAQAAAD6/wQAAAACAAQAAAD7/wQAAAACAAQAAAD8/wQAAAACAAQAAAD9/wQAAAACAAQAAAD+/wQAAAACAAQAAAD//wQAAAACAAQAAAAAAAQAAAACAAQAAAABAAQAAAACAAQAAAACAAQAAAACAAQAAAADAAQAAAACAAQAAAADAAMAAAACAAQAAAACAAMAAAACAAQAAAABAAMAAAACAAQAAAAAAAMAAAACAAQAAAD//wMAAAACAAQAAAD+/wMAAAACAAQAAAD9/wMAAAACAAQAAAD8/wMAAAACAAQAAAD7/wMAAAACAAQAAAAEAAMAAAACAAQAAAAFAAMAAAACAAQAAAAGAAMAAAACAAQAAAAHAAMAAAACAAQAAAAHAAQAAAACAAQAAAAGAAQAAAACAAQAAAAGAAUAAAACAAQAAAAFAAUAAAACAAQAAAAEAAUAAAACAAQAAAADAAUAAAACAAQAAAACAAUAAAACAAQAAAABAAUAAAACAAQAAAAAAAUAAAACAAQAAAD//wUAAAACAAQAAAAEAAQAAAACAAQAAAAFAAQAAAACAAQAAAAHAAUAAAACAAQAAAAHAAYAAAACAAQAAAAHAAcAAAACAAQAAAAHAAgAAAACAAQAAAAHAAkAAAACAAQAAAAHAAoAAAACAAQAAAAHAAsAAAACAAQAAAAHAAwAAAACAAQAAAAHAA0AAAACAAQAAAAHAA4AAAACAAQAAAAGAA4AAAACAAQAAAAGAA0AAAACAAQAAAAFAA0AAAACAAQAAAAFAAwAAAACAAQAAAAEAAwAAAACAAQAAAAEAAsAAAACAAQAAAADAAsAAAACAAQAAAADAAoAAAACAAQAAAACAAoAAAACAAQAAAACAAkAAAACAAQAAAABAAkAAAACAAQAAAD4/wQAAAACAAQAAAD4/wUAAAACAAQAAAD4/wYAAAACAAQAAAD4/wcAAAACAAQAAAD4/wgAAAACAAQAAAD4/wkAAAACAAQAAAD4/woAAAACAAQAAAD4/wsAAAACAAQAAAD4/wwAAAACAAQAAAD4/w0AAAACAAQAAAD4/w4AAAACAAQAAAD5/wUAAAACAAQAAAD5/wYAAAACAAQAAAD5/wcAAAACAAQAAAD5/wgAAAACAAQAAAD5/wkAAAACAAQAAAD5/woAAAACAAQAAAD5/wsAAAACAAQAAAD5/wwAAAACAAQAAAD5/w0AAAACAAQAAAD5/w4AAAACAAQAAAD6/wUAAAACAAQAAAD6/wYAAAACAAQAAAD6/wcAAAACAAQAAAD6/wgAAAACAAQAAAD6/wkAAAACAAQAAAD6/woAAAACAAQAAAD6/wsAAAACAAQAAAD6/wwAAAACAAQAAAD6/w0AAAACAAQAAAD6/w4AAAACAAQAAAD7/wUAAAACAAQAAAD7/wYAAAACAAQAAAD7/wcAAAACAAQAAAD7/wgAAAACAAQAAAD7/wkAAAACAAQAAAD7/woAAAACAAQAAAD7/wsAAAACAAQAAAD7/wwAAAACAAQAAAD7/w0AAAACAAQAAAD7/w4AAAACAAQAAAD8/wUAAAACAAQAAAD8/wYAAAACAAQAAAD8/wcAAAACAAQAAAD8/wgAAAACAAQAAAD8/wkAAAACAAQAAAD8/woAAAACAAQAAAD8/wsAAAACAAQAAAD8/wwAAAACAAQAAAD8/w0AAAACAAQAAAD8/w4AAAACAAQAAAD9/wUAAAACAAQAAAD9/wYAAAACAAQAAAD9/wcAAAACAAQAAAD9/wgAAAACAAQAAAD9/wkAAAACAAQAAAD9/woAAAACAAQAAAD9/wsAAAACAAQAAAD9/wwAAAACAAQAAAD9/w0AAAACAAQAAAD9/w4AAAACAAQAAAD+/wUAAAACAAQAAAD+/wYAAAACAAQAAAD+/wcAAAACAAQAAAD+/wgAAAACAAQAAAD+/wkAAAACAAQAAAD+/woAAAACAAQAAAD+/wsAAAACAAQAAAD+/wwAAAACAAQAAAD+/w0AAAACAAQAAAD+/w4AAAACAAQAAAD//wYAAAACAAQAAAD//wcAAAACAAQAAAD//wgAAAACAAQAAAD//wkAAAACAAQAAAD//woAAAACAAQAAAD//wsAAAACAAQAAAD//wwAAAACAAQAAAD//w0AAAACAAQAAAD//w4AAAACAAQAAAAAAAYAAAACAAQAAAAAAAcAAAACAAQAAAAAAAgAAAACAAQAAAAAAAkAAAACAAQAAAAAAAoAAAACAAQAAAAAAAsAAAACAAQAAAAAAAwAAAACAAQAAAAAAA0AAAACAAQAAAAAAA4AAAACAAQAAAABAAYAAAACAAQAAAABAAcAAAACAAQAAAABAAgAAAACAAQAAAABAAoAAAACAAQAAAABAAsAAAACAAQAAAABAAwAAAACAAQAAAABAA0AAAACAAQAAAABAA4AAAACAAQAAAACAAYAAAACAAQAAAACAAcAAAACAAQAAAACAAgAAAACAAQAAAACAAsAAAACAAQAAAACAAwAAAACAAQAAAACAA0AAAACAAQAAAACAA4AAAACAAQAAAADAAYAAAACAAQAAAADAAcAAAACAAQAAAADAAgAAAACAAQAAAADAAkAAAACAAQAAAADAAwAAAACAAQAAAADAA0AAAACAAQAAAADAA4AAAACAAQAAAAEAAYAAAACAAQAAAAEAAcAAAACAAQAAAAEAAgAAAACAAQAAAAEAAkAAAACAAQAAAAEAAoAAAACAAQAAAAEAA0AAAACAAQAAAAEAA4AAAACAAQAAAAFAAYAAAACAAQAAAAFAAcAAAACAAQAAAAFAAgAAAACAAQAAAAFAAkAAAACAAQAAAAFAAoAAAACAAQAAAAFAAsAAAACAAQAAAAFAA4AAAACAAQAAAAGAAYAAAACAAQAAAAGAAcAAAACAAQAAAAGAAgAAAACAAQAAAAGAAkAAAACAAQAAAAGAAoAAAACAAQAAAAGAAsAAAACAAQAAAAGAAwAAAACAAQAAAACAP3/AAACAAMAAAACAP7/AAADAAQAAAACAP//AAADAAQAAAACAAAAAAADAAQAAAADAP3/AAACAAMAAAADAP7/AAADAAQAAAADAP//AAADAAQAAAADAAAAAAADAAQAAAAEAP3/AAACAAMAAAAEAP7/AAADAAQAAAAEAP//AAADAAQAAAAEAAAAAAADAAQAAAAFAP3/AAACAAMAAAAFAP7/AAADAAQAAAAFAP//AAADAAQAAAAFAAAAAAADAAQAAAAGAP3/AAACAAMAAAAGAP7/AAADAAQAAAAGAP//AAADAAQAAAAGAAAAAAADAAQAAAAHAP3/AAACAAMAAAABAP3/AAACAAMAAAA=")
+tile_set = SubResource("TileSet_xvadc")
+
+[node name="Gina Labubu" type="CharacterBody2D" parent="."]
+position = Vector2(-19, -9)
+script = ExtResource("2_kgyeb")
+
+[node name="sprite" type="AnimatedSprite2D" parent="Gina Labubu"]
+sprite_frames = SubResource("SpriteFrames_124wg")
+animation = &"bite"
+autoplay = "idle"
+frame = 4
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gina Labubu"]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_7coij")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Gina Labubu"]
+
+[node name="Camera2D" type="Camera2D" parent="Gina Labubu"]
+zoom = Vector2(2.5, 2.5)
+
+[connection signal="animation_changed" from="Gina Labubu/sprite" to="Gina Labubu" method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="animation_finished" from="Gina Labubu/sprite" to="Gina Labubu" method="_on_animated_sprite_2d_animation_finished"]
