@@ -9,7 +9,7 @@ var max_buffered_moves = 2
 var buffer_time = 100
 
 var moves: Array[BufferedMove]
-var whitelisted_moves = ["grapple", "attack", "jump"]
+var whitelisted_moves = ["attack", "jump"]
 var actionable = true #make sure its turned off when acting
 var action_just_pressed
 signal acted(move, direction)

@@ -11,12 +11,17 @@ config_version=5
 [application]
 
 config/name="Labubu Squad"
+run/main_scene="uid://nay1uosfnt7f"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://duw3f1vqpd2mf"
 
 [autoload]
 
 InputProcessor="*res://scripts/input_processor.gd"
+
+[global_group]
+
+player=""
 
 [input]
 

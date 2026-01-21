@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://61bghkkagn4j"]
+
+[ext_resource type="Texture2D" uid="uid://kvb63nplagfr" path="res://sprites/characters/gina labubu/rope.png" id="1_6b7sb"]
+[ext_resource type="Texture2D" uid="uid://dkmfgmfrig5r6" path="res://sprites/characters/gina labubu/hook.png" id="2_og2rv"]
+[ext_resource type="Script" uid="uid://cyt3bjqa4l686" path="res://scripts/player/real_gina.gd" id="3_kcxsh"]
+[ext_resource type="Texture2D" uid="uid://dtfvvxtr5kdq8" path="res://sprites/characters/gina labubu/real_gina_labubu.png" id="4_wlwvl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p48o3"]
+radius = 7.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n1dmb"]
+size = Vector2(14, 22)
+
+[node name="Grapple_Gina" type="Node2D"]
+
+[node name="Line2D" type="Line2D" parent="."]
+width = 2.0
+texture = ExtResource("1_6b7sb")
+texture_mode = 1
+
+[node name="hook" type="StaticBody2D" parent="."]
+position = Vector2(-33, -99)
+collision_layer = 0
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="hook"]
+position = Vector2(-8, 0)
+texture = ExtResource("2_og2rv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hook"]
+position = Vector2(-8, 0)
+shape = SubResource("CircleShape2D_p48o3")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="hook"]
+position = Vector2(-15, 0)
+node_a = NodePath("..")
+node_b = NodePath("../../real_gina")
+
+[node name="real_gina" type="RigidBody2D" parent="."]
+position = Vector2(-135, -65)
+collision_mask = 4
+script = ExtResource("3_kcxsh")
+
+[node name="Camera2D" type="Camera2D" parent="real_gina"]
+zoom = Vector2(2.5, 2.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="real_gina"]
+position = Vector2(2, -3)
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("4_wlwvl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="real_gina"]
+shape = SubResource("RectangleShape2D_n1dmb")
