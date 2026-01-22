@@ -75,8 +75,12 @@ func _physics_process(_delta: float) -> void:
 	
 	if not is_on_floor():
 		if velocity.y >= 0 and current_state == state.idle:
-			pass
-			#animator.play("fall")
+			animator.play("fall")
+		if velocity.y < 0 and current_state == state.idle:
+			if jumps_left == double_jumps:
+				animator.play("jump")
+			else:
+				animator.play("double_jump")
 		
 	if current_state == state.idle:
 		if facing_right and h_direction < 0:
@@ -127,6 +131,7 @@ func Grapple(grapple_to: Vector2, rotate_to: float):
 	hook.global_position = grapple_to
 	hook.global_rotation = rotate_to
 	real_gina.global_position = global_position
+	real_gina.apply_central_impulse(velocity)
 	get_tree().current_scene.call_deferred("add_child", instance)
 	queue_free()
 
