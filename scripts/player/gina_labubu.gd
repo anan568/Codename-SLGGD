@@ -88,7 +88,7 @@ func _physics_process(_delta: float) -> void:
 		if !facing_right and h_direction > 0:
 			flip()
 			
-	if Input.is_action_pressed("grapple") and grappleable and not grappling:
+	if Input.is_action_just_pressed("grapple") and grappleable and not grappling:
 		grappling = true
 		grappleable = false
 		await get_tree().process_frame

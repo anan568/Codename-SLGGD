@@ -6,6 +6,7 @@ extends RigidBody2D
 var gina_labubu = load("res://character scenes/gina_labubu.tscn")
 var force = 10
 var speed = 5
+var launch_force = 5
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,13 +30,24 @@ func _physics_process(delta: float) -> void:
 		
 	var v_axis = Input.get_axis("down", "up")
 	if v_axis:
-		global_position = global_position.move_toward(hook.global_position, speed * v_axis)
+		apply_impulse(Vector2(0, force * -v_axis))
 		
 	if not Input.is_action_pressed("grapple"):
 		var instance = gina_labubu.instantiate()
 		instance.global_position = global_position
 		instance.velocity = linear_velocity
 		instance.max_speed = max(linear_velocity.x, linear_velocity.y)
+		instance.just_launched = true
+		instance.jumps_left = instance.double_jumps
+		get_tree().current_scene.add_child(instance)
+		$"..".queue_free()
+		
+	if Input.is_action_pressed("jump"):
+		var instance = gina_labubu.instantiate()
+		instance.global_position = global_position
+		var thug_launch = Vector2(global_position.distance_to(hook.global_position), 0).rotated(global_position.angle_to_point(hook.global_position)) * launch_force
+		instance.velocity = thug_launch
+		instance.max_speed = instance.velocity.x
 		instance.just_launched = true
 		instance.jumps_left = instance.double_jumps
 		get_tree().current_scene.add_child(instance)
