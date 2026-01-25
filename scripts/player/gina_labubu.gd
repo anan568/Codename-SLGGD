@@ -41,6 +41,8 @@ func _ready() -> void:
 	current_state = state.idle
 	if max_speed != null and max_speed < ground_speed:
 		max_speed = ground_speed
+	if max_speed == null:
+		max_speed = ground_speed
 	
 func _physics_process(_delta: float) -> void:
 	var h_direction = Input.get_axis("left", "right")
@@ -49,7 +51,9 @@ func _physics_process(_delta: float) -> void:
 	if not just_launched and !h_direction:
 		velocity.x = move_toward(velocity.x, 0, friction)
 		
-	if h_direction:
+	if h_direction > 0 and velocity.x < max_speed * raw_h_direction:
+		velocity.x = move_toward(velocity.x, max_speed * ground_speed_multiplier * raw_h_direction, ground_acceleration)
+	if h_direction < 0 and velocity.x > max_speed * raw_h_direction:
 		velocity.x = move_toward(velocity.x, max_speed * ground_speed_multiplier * raw_h_direction, ground_acceleration)
 	
 	if is_on_floor():
@@ -131,7 +135,7 @@ func Grapple(grapple_to: Vector2, rotate_to: float):
 	hook.global_position = grapple_to
 	hook.global_rotation = rotate_to
 	real_gina.global_position = global_position
-	real_gina.apply_central_impulse(velocity)
+	real_gina.linear_velocity = velocity
 	get_tree().current_scene.call_deferred("add_child", instance)
 	queue_free()
 

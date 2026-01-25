@@ -8,8 +8,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_p48o3"]
 radius = 7.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n1dmb"]
-size = Vector2(14, 22)
+[sub_resource type="CircleShape2D" id="CircleShape2D_6b7sb"]
+radius = 8.0
 
 [node name="Grapple_Gina" type="Node2D"]
 
@@ -50,4 +50,5 @@ scale = Vector2(0.01, 0.01)
 texture = ExtResource("4_wlwvl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="real_gina"]
-shape = SubResource("RectangleShape2D_n1dmb")
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_6b7sb")

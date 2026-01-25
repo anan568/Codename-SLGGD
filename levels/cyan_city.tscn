@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=4 uid="uid://nay1uosfnt7f"]
+[gd_scene load_steps=12 format=4 uid="uid://nay1uosfnt7f"]
 
 [ext_resource type="Texture2D" uid="uid://c6qldl3uyytgx" path="res://sprites/tilemaps/cyan_city.png" id="1_v7ksl"]
 [ext_resource type="PackedScene" uid="uid://jn2ltitb2rdh" path="res://character scenes/gina_labubu.tscn" id="2_hi3m2"]
+[ext_resource type="Script" uid="uid://dd43vdrtyvkst" path="res://scripts/enemy/hn.gd" id="3_kgyeb"]
+[ext_resource type="Texture2D" uid="uid://cyhx3r7fnpmdy" path="res://sprites/characters/mime/hn.png" id="4_ikgfs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hi3m2"]
 texture = ExtResource("1_v7ksl")
@@ -18,6 +20,37 @@ physics_layer_0/collision_layer = 4
 physics_layer_0/collision_mask = 255
 sources/0 = SubResource("TileSetAtlasSource_hi3m2")
 
+[sub_resource type="Curve2D" id="Curve2D_sbv5n"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 67, -138, 0, 0, 0, 0, 71, 4, 0, 0, 0, 0, 67, -138)
+}
+point_count = 3
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1dmb"]
+atlas = ExtResource("4_ikgfs")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p48o3"]
+atlas = ExtResource("4_ikgfs")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i64mm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1dmb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p48o3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppq4i"]
+size = Vector2(17, 63)
+
 [node name="Cyan City" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -26,3 +59,25 @@ tile_set = SubResource("TileSet_xvadc")
 
 [node name="Gina Labubu" parent="." instance=ExtResource("2_hi3m2")]
 position = Vector2(-23, -15)
+
+[node name="enemy hn" type="Path2D" parent="."]
+position = Vector2(21, -69)
+curve = SubResource("Curve2D_sbv5n")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="enemy hn"]
+position = Vector2(71, 4)
+rotation = 1.5426347
+progress = 142.05634
+rotates = false
+
+[node name="hn" type="StaticBody2D" parent="enemy hn/PathFollow2D"]
+scale = Vector2(0.9999999, 0.9999999)
+script = ExtResource("3_kgyeb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enemy hn/PathFollow2D/hn" groups=["enemy"]]
+sprite_frames = SubResource("SpriteFrames_i64mm")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy hn/PathFollow2D/hn"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_ppq4i")

@@ -22,6 +22,7 @@ InputProcessor="*res://scripts/input_processor.gd"
 [global_group]
 
 player=""
+enemy=""
 
 [input]
 

@@ -3,8 +3,8 @@ extends Node2D
 @onready var line = $Line2D
 var player
 
-var speed = 15  
-var time = 0.3
+var speed = 20
+var time = 0.2
 var min_time = 0.1
 var timer = 0
 var going_back = false
